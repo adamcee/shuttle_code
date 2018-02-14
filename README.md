@@ -1,7 +1,7 @@
 Very simple demo app for employer/employee CRUD.
 
 # Configuration Notes
-    - Sequelize requires `sequelize-cli` for migrations. However, the stable version of `sequelize-cli` does not fully support sequelize v4. According to this, it is still safe to use for most things, including migrations: https://github.com/sequelize/sequelize/issues/8773
+- Sequelize requires `sequelize-cli` for migrations. However, the stable version of `sequelize-cli` does not fully support sequelize v4. According to this, it is still safe to use for most things, including migrations: https://github.com/sequelize/sequelize/issues/8773
 
 
 # Future Notes
