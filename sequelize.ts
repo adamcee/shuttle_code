@@ -5,8 +5,6 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
 // TODO: Move these to a .json file or use something like dotenv
-// TODO: Use Symbols or Typescript Types instead of strings.
-// see: http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
 const DEV_DB = 'shuttle_code_dev';
 const DEV_USR = 'shuttle_code_dev';
 const DEV_PW = 'ShuttleC0de!';
