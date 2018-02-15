@@ -9,7 +9,8 @@
   "author": "Adam Cahan",
   "license": "MIT",
   "scripts": {
-    "build_dev_env": "bash scripts/postgres_dev_setup.sh && cd src && sequelize init"
+    "build_dev_env": "npm run postgres_dev_setup && cd src && sequelize init",
+    "postgres_dev_setup": "./scripts/postgres_dev_setup.js"
   },
   "dependencies": {
     "async": "^2.6.0",
