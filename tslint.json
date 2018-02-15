@@ -1,5 +1,24 @@
 {
+    "extends": [
+        "tslint-immutable"
+    ],
     "rules": {
+        "no-parameter-reassignment": true,
+        "typedef": [true, "call-signature"],
+
+        "readonly-keyword": true,
+        "readonly-array": true,
+        "no-let": true,
+        "no-object-mutation": true,
+        "no-delete": true,
+        "no-method-signature": true,
+
+        "no-this": true,
+        "no-class": true,
+        "no-mixed-interface": true,
+        "no-expression-statement": true,
+        "no-if-statement": true,
+
         "class-name": true,
         "comment-format": [
             true,
