@@ -20,7 +20,6 @@
         "noUnusedParameters": true,
         "noImplicitThis": false,
         "strictNullChecks": false,
-        "declaration": true,
         "lib": ["es2016", "dom"],
         "paths": {
             "*": [
