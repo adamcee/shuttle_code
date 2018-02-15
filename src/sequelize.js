@@ -1,17 +1,11 @@
 /**
  * Sequelize ORM
  **/
+var dotenv = require('dotenv').config();
 var Sequelize = require('sequelize');
 var Op = Sequelize.Op;
-// TODO: Move these to a .json file or use something like dotenv
-// TODO: Use Symbols or Typescript Types instead of strings.
-// see: http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
-var DEV_DB = 'shuttle_code_dev';
-var DEV_USR = 'shuttle_code_dev';
-var DEV_PW = 'ShuttleC0de!';
-var DEV_HOST = 'localhost';
-var sequelize = new Sequelize(DEV_DB, DEV_USR, DEV_PW, {
-    host: DEV_HOST,
+var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     operatorsAliases: Op,
     dialect: 'postgres',
     pool: {
@@ -25,7 +19,7 @@ var sequelize = new Sequelize(DEV_DB, DEV_USR, DEV_PW, {
 sequelize
     .authenticate()
     .then(function () {
-    console.log('connection established.');
+    console.log('Database connection established.');
 })["catch"](function (err) {
-    console.log('Error - sequelize failed to connect to database.');
+    console.log("Error - Sequelize failed to connect: " + err);
 });

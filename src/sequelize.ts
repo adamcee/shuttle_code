@@ -1,17 +1,12 @@
 /**
  * Sequelize ORM
  **/
+const dotenv = require('dotenv').config();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
-// TODO: Move these to a .json file or use something like dotenv
-const DEV_DB = 'shuttle_code_dev';
-const DEV_USR = 'shuttle_code_dev';
-const DEV_PW = 'ShuttleC0de!';
-const DEV_HOST = 'localhost';
-
-const sequelize = new Sequelize(DEV_DB, DEV_USR, DEV_PW, {
-    host: DEV_HOST,
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     operatorsAliases: Op,
     dialect: 'postgres',
     pool: {
@@ -26,8 +21,8 @@ const sequelize = new Sequelize(DEV_DB, DEV_USR, DEV_PW, {
 sequelize
     .authenticate()
     .then(() => {
-        console.log('connection established.');
+        console.log('Database connection established.');
     })
-    .catch(err => {
-        console.log('Error - sequelize failed to connect to database.')
+    .catch((err: any) => {
+        console.log(`Error - Sequelize failed to connect: ${err}`)
     })
