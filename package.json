@@ -19,7 +19,6 @@
     "test_db_conn": "node dist/test_sequelize.js"
   },
   "dependencies": {
-    "@types/sequelize": "^4.27.6",
     "async": "^2.6.0",
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.1",
@@ -47,10 +46,11 @@
     "reflect-metadata": "^0.1.12",
     "request": "^2.83.0",
     "sequelize": "^4.33.4",
-    "sequelize-cli": "^3.2.0",
-    "sequelize-typescript": "^0.6.2"
+    "sequelize-cli": "^3.2.0"
   },
   "devDependencies": {
+    "sequelize-typescript": "^0.6.2",
+    "@types/sequelize": "^4.27.6",
     "@types/async": "^2.0.45",
     "@types/bcrypt-nodejs": "0.0.30",
     "@types/bluebird": "^3.5.20",
