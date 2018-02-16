@@ -1,28 +1,20 @@
-console.log('greete.js running ...');
-
-class Student {
-    fullName: string;
-    constructor(
-        public firstName: string,
-        public middleInitial: string,
-        public lastName: string
-    ) {
-        this.fullName = `${firstName} ${middleInitial} ${lastName}`
-    }
-}
+console.log("greeter.js running ...");
 
 interface Person {
-    firstName: string;
-    lastName: string;
-    fullName: string;
+    readonly firstName: string;
+    readonly lastName: string;
+    readonly middleInitial: string;
 }
 
-function greeter(person: Person) {
-    return `Hello, ${person.fullName}`
+function greeter(person: Person): String {
+    const fullName = getFullName(person);
+    return `Hello, ${fullName}`;
 }
-console.log('greeter func defined');
 
+function getFullName(person: Person): string {
+    return `${person.firstName} ${person.middleInitial} ${person.lastName}`;
+}
 
-let user = new Student("Jane", "M","User");
-let message = greeter(user)
-console.log(message)
+const user: Person = {firstName: "Jane", middleInitial: "M", lastName: "User"};
+const message = greeter(user);
+console.log(message);
