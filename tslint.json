@@ -13,10 +13,10 @@
         "no-delete": true,
         "no-method-signature": true,
 
-        "no-this": true,
-        "no-class": true,
+        "no-this": false,
+        "no-class": false,
         "no-mixed-interface": true,
-        "no-expression-statement": true,
+        "no-expression-statement": false,
         "no-if-statement": true,
 
         "class-name": true,
