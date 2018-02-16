@@ -23,6 +23,6 @@ sequelize
     .then(() => {
         console.log('Database connection established.');
     })
-    .catch((err: any) => {
+    .catch((err) => {
         console.log(`Error - Sequelize failed to connect: ${err}`)
     })
