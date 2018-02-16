@@ -2,7 +2,7 @@
  * employer.ts
  * employer model
  */
-import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt, 
+import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt,
     PrimaryKey, AutoIncrement, Scopes } from "sequelize-typescript";
 import { Employee } from "./employee";
 
