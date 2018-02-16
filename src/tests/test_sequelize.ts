@@ -1,7 +1,7 @@
 /**
  * Simple test that sequelize connects to database.
  */
-import { sequelize } from "./sequelize_config";
+import { sequelize } from "src/sequelize_config";
 
  const seq_prom = sequelize
     .authenticate()
