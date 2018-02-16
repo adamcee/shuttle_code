@@ -1,4 +1,4 @@
-console.log("greeter.js running ...");
+console.log("hello-world.js running ... this means typescript should be basically set up.");
 
 interface Person {
     readonly firstName: string;
