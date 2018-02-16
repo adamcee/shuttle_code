@@ -2,28 +2,46 @@
  * employee.ts
  * employee model
  */
-import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt } from "sequelize-typescript";
+import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt,
+    PrimaryKey, AutoIncrement, ForeignKey, BelongsTo, IsEmail } from "sequelize-typescript";
+import { Employer } from "./employer";
 
 @Table
-class Employee extends Model<Employee> {
+export class Employee extends Model<Employee> {
+    @PrimaryKey
+    @AutoIncrement
     @Column
+    id: number;
+
+    @ForeignKey(() => Employer)
+    @Column
+    employerId: number;
+
+    @BelongsTo(() => Employer)
+    employer;
+
     @AllowNull(false)
+    @Column
     first_name: string;
 
-    @Column
     @AllowNull(false)
+    @Column
     last_name: string;
 
-    @Column
     @AllowNull(false)
-    date_of_birth: Date;
+    @IsEmail
+    @Column
+    email: string;
 
     @Column
+    phone_number: number;
+
     @CreatedAt
+    @Column
     creationDate: Date;
 
-    @Column
     @UpdatedAt
+    @Column
     updatedOn: Date;
 
     @DeletedAt

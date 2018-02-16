@@ -2,25 +2,31 @@
  * employer.ts
  * employer model
  */
-import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt } from "sequelize-typescript";
+import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt, 
+    PrimaryKey, AutoIncrement, Scopes } from "sequelize-typescript";
+import { Employee } from "./employee";
 
+@Scopes({
+    employees: {
+      include: [{
+        model: () => Employee,
+        through: {attributes: []},
+      }],
+    }
+})
 @Table
-class Employer extends Model<Employer> {
+export class Employer extends Model<Employer> {
+    @PrimaryKey
+    @AutoIncrement
+    @Column
+    id: number;
+
+    @HasMany(() => Employee)
+    employees;
+
     @AllowNull(false)
     @Column
     name: string;
-
-    @AllowNull(false)
-    @Column
-    city: string;
-
-    @AllowNull(false)
-    @Column
-    state: string;
-
-    @AllowNull(false)
-    @Column
-    zip: string;
 
     @CreatedAt
     @Column
