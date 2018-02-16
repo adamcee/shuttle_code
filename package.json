@@ -49,8 +49,6 @@
     "sequelize-cli": "^3.2.0"
   },
   "devDependencies": {
-    "sequelize-typescript": "^0.6.2",
-    "@types/sequelize": "^4.27.6",
     "@types/async": "^2.0.45",
     "@types/bcrypt-nodejs": "0.0.30",
     "@types/bluebird": "^3.5.20",
@@ -66,7 +64,9 @@
     "@types/lusca": "^1.5.0",
     "@types/morgan": "^1.7.32",
     "@types/node": "^7.0.55",
+    "@types/pg": "^7.4.4",
     "@types/request": "^2.0.9",
+    "@types/sequelize": "^4.27.6",
     "@types/shelljs": "^0.7.7",
     "@types/supertest": "^2.0.4",
     "chai": "^4.1.2",
@@ -74,6 +74,7 @@
     "jest": "^21.2.1",
     "node-sass": "^4.7.2",
     "nodemon": "^1.13.0",
+    "sequelize-typescript": "^0.6.2",
     "shelljs": "^0.7.7",
     "supertest": "^3.0.0",
     "ts-jest": "^21.2.4",
