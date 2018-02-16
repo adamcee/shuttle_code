@@ -17,6 +17,7 @@
     "tslint": "tslint -c tslint.json -p tsconfig.json --project . -t stylish || echo"
   },
   "dependencies": {
+    "@types/sequelize": "^4.27.6",
     "async": "^2.6.0",
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.1",
