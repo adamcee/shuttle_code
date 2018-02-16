@@ -1,29 +1,33 @@
 /**
- * employee.ts
- * employee model
+ * employer.ts
+ * employer model
  */
 import { Table, Column, Model, HasMany, AllowNull, CreatedAt, UpdatedAt, DeletedAt } from "sequelize-typescript";
 
 @Table
-class Employee extends Model<Employee> {
-    @Column
+class Employer extends Model<Employer> {
     @AllowNull(false)
-    first_name: string;
-
     @Column
+    name: string;
+
     @AllowNull(false)
-    last_name: string;
-
     @Column
+    city: string;
+
     @AllowNull(false)
-    date_of_birth: Date;
-
     @Column
+    state: string;
+
+    @AllowNull(false)
+    @Column
+    zip: string;
+
     @CreatedAt
+    @Column
     creationDate: Date;
 
-    @Column
     @UpdatedAt
+    @Column
     updatedOn: Date;
 
     @DeletedAt
