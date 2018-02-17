@@ -11,12 +11,13 @@
   "scripts": {
     "build_dev_env": "npm run postgres_dev_setup && cd src && sequelize init",
     "postgres_dev_setup": "./scripts/postgres_dev_setup.js",
-    "build": "npm run build-ts && npm run tslint",
-    "build-ts": "tsc",
-    "watch-ts": "tsc -w",
+    "build": "npm run build_ts && npm run tslint",
+    "build_ts": "tsc",
+    "watch_ts": "tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json --project . -t stylish || echo",
     "test_typescript_setup": "node dist/hello-world.js",
-    "test_db_conn": "node dist/test_sequelize.js"
+    "test_db_conn": "node dist/test_sequelize.js",
+    "install_migrations_tool": "./scripts/install_standalone_migrations.sh"
   },
   "dependencies": {
     "async": "^2.6.0",

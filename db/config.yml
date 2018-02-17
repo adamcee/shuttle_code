@@ -1,0 +1,7 @@
+development:
+    adapter: postgresql
+    encoding: unicode
+    database: shuttle_code_dev
+    pool: 5
+    username: shuttle_code_dev
+    password: ShuttleC0de!

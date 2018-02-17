@@ -5,20 +5,35 @@ First, install [node.js](https://nodejs.org/en/).
 
 Then, install Postgresql on your machine ([OS X instructions](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb), [Linux instructions](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04)).
 
-Then, run `npm install`.
+Now, set up the migration tool. This project uses [Standalone Migrations](https://github.com/thuss/standalone-migrations), which is a Ruby gem to use Rails Database Migrations in non-Rails/non-Ruby projects. The Rails migration tool is excellent and there currently is not an equivalent in the node.js ecosystem which is a standalone migration tool and not part of a broader ORM (and Rails Active Migrations can give those a run for their money).
 
-Then,  run `npm build_dev_env`.
+Be sure you have [Ruby](https://www.ruby-lang.org/en/documentation/installation/), [RubyGems](https://rubygems.org/pages/download), and [Bundler](http://bundler.io/). FYI Bundler can be installed via `gem install bundler`.
 
-Then, run `npm run build`. 
+Then, run `bundle install && npm install && npm run build_dev_env && npm run build_ts`.
 
-You should now be able to run `npm run test_typescript_setup && npm run test_db_conn` -  you should then see a simple "Hello World" message, and a message indicating that a connection to the database has been established. There may be an additional line or two of status info, but there should be no errors. This indicates that Typescript files are correctly compiling and that a connection to the local development database has been established.
+You should now be able to run `npm run test_typescript_setup && npm run test_db_conn`
 
-# Configuration Notes
-- Sequelize requires `sequelize-cli` for migrations. However, the stable version of `sequelize-cli` does not fully support sequelize v4. According to this, it is still safe to use for most things, including migrations: https://github.com/sequelize/sequelize/issues/8773
+You should then see a simple "Hello World" message, and a message indicating that a connection to the database has been established. There may be an additional line or two of status info, but there should be no errors. This indicates that Typescript files are correctly compiling and that a connection to the local development database has been established.
 
 
-# Future Notes
-  - If using core-js: Typescript was throwing a variety of errors initially. This was solved by downgrading the following packages to specific versions:
-    - `@types/node`to v7.0.7
-    - `@types/core-js` to v0.9.35
+# Using the Migration Tool
 
+It is easier to directly use Standalone Migrations from the command line, than wrap its commands in npm scripts. This allows for a much simpler passing of command-line arguments than would be possible with an npm script. The full documentation is available on the project site but here are the basic commands:
+
+*To apply your newest migration:*
+`rake db:migrate`
+
+*To migrate to a specific version (for example to rollback)*
+`rake db:migrate VERSION=20081220234130`
+
+*To migrate a specific database (for example your "testing" database)*
+`rake db:migrate RAILS_ENV=test`
+
+*To execute a specific up/down of one single migration*
+`rake db:migrate:up VERSION=20081220234130`
+
+*To revert your last migration*
+`rake db:rollback`
+
+*To revert your last 3 migrations*
+`rake db:rollback STEP=3`
