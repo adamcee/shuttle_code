@@ -2,7 +2,7 @@ development:
     adapter: postgresql
     database: shuttle_code_dev
     pool: 5
-    encoding: utf8
+    encoding: unicode
     timeout: 30000
     username: shuttle_code_dev
     password: ShuttleC0de!
