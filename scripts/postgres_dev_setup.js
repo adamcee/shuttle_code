@@ -1,35 +1,38 @@
 #!/usr/bin/env node
-'use strict';
-// Command line script to set up Postgres local dev database.
-var dotenv = require('dotenv').config();
-var spawnSync = require('child_process').spawnSync;
-console.log('Creating Postgres dev user and database ...');
+var dotenv = require("dotenv").config();
+var spawnSync = require("child_process").spawnSync;
+console.log("Creating Postgres dev user and database ...");
 // NOTE: If this script expands, write some helper functions to cut down on
 // duplicate code.
-var create_role = spawnSync('psql', ['-c', "CREATE ROLE " + process.env.DB_USER + " WITH PASSWORD '" + process.env.DB_PASSWORD + "';"]);
-print_output('create role', create_role);
-// make_user.stdout.on('data', data => console.log(`stdout: ${data}`));
-// make_user.stderr.on('data', data => console.log(`stderr: ${data}`));
-// make_user.close.on('close', code => console.log(`make_user exited with code: ${close}`));
-var create_db = spawnSync('psql', ['-c', "CREATE DATABASE " + process.env.DB_NAME + ";"]);
-print_output('create db', create_db);
-// make_db.stdout.on('data', data => console.log(`stdout: ${data}`));
-// make_db.stderr.on('data', data => console.log(`stderr: ${data}`));
-// make_db.close.on('close', code => console.log(`make_db exited with code: ${close}`));
-var grant_privileges = spawnSync('psql', ["-c", "GRANT ALL PRIVILEGES ON DATABASE " + process.env.DB_NAME + " TO " + process.env.DB_USER + ";"]);
-print_output('grant all privileges', grant_privileges);
-// grant_privileges.stdout.on('data', data => console.log(`stdout: ${data}`));
-// grant_privileges.stderr.on('data', data => console.log(`stderr: ${data}`));
-// grant_privileges.close.on('close', code => console.log(`grant_privileges exited with code: ${close}`));
-var add_login = spawnSync('psql', ['-c', "ALTER ROLE " + process.env.DB_USER + " WITH LOGIN;"]);
-print_output('add login', add_login);
-// add_login.stdout.on('data', data => console.log(`stdout: ${data}`));
-// add_login.stderr.on('data', data => console.log(`stderr: ${data}`));
-// add_login.close.on('close', code => console.log(`add_login exited with code: ${close}`));
-function print_output(cmd, msgs) {
+var roleQuery = ensureSemicolon("CREATE ROLE " + process.env.DB_USER + " WITH PASSWORD '" + process.env.DB_PASSWORD + "';");
+executePsql("create role", ["-c", roleQuery]);
+var dbQuery = ensureSemicolon("CREATE DATABASE " + process.env.DB_NAME + ";");
+executePsql("create db", ["-c", dbQuery]);
+var privQuery = ensureSemicolon("GRANT ALL PRIVILEGES ON DATABASE " + process.env.DB_NAME + " TO " + process.env.DB_USER + ";");
+executePsql("grant all privileges", ["-c", privQuery]);
+var loginQuery = ensureSemicolon("ALTER ROLE " + process.env.DB_USER + " WITH LOGIN;");
+executePsql("add login", ["-c", loginQuery]);
+// citext extension adds case-insensitive text field type to database.
+var ciQuery = ensureSemicolon("CREATE EXTENSION citext;");
+executePsql("install citext extension for database", ["" + process.env.DB_NAME, "-c", ciQuery]);
+function executePsql(description, commands) {
+    var output = spawnSync("psql", commands);
+    printOutput(description, output);
+}
+function printOutput(cmd, msgs) {
     console.log("Info for " + cmd + ":");
     var stdout = msgs.stdout, stderr = msgs.stderr, status = msgs.status;
     console.log("stdout: " + stdout);
     console.log("stderr: " + stderr);
     console.log("exit code: " + status);
+}
+function ensureSemicolon(sqlStatement) {
+    var lastChar = sqlStatement.slice(-1);
+    switch (lastChar) {
+        case ";":
+            return sqlStatement;
+        default:
+            var withSemi = sqlStatement + ";";
+            return withSemi;
+    }
 }
