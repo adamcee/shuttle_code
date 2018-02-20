@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build_dev_env": "npm run postgres_dev_setup && cd src && sequelize init",
-    "postgres_dev_setup": "./scripts/postgres_dev_setup.js",
+    "postgres_dev_setup": "tsc ./scripts/postgres_dev_setup.ts && ./scripts/postgres_dev_setup.js",
     "build": "npm run build_ts && npm run tslint",
     "build_ts": "tsc",
     "watch_ts": "tsc -w",
