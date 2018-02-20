@@ -22,3 +22,6 @@ It is easier to directly use db-migrate from the command line, than wrap its com
 
 *To drop all migrations:*
 `npm run migrate_down`
+
+# NOTES
+- db-migrate is set to require migration files to be .sql files (which are executed by their corresponding .js migration files). Since the .sql file contains the actual migration queries to be applied, be sure your global .gitignore file is not ignoring .sql files.
