@@ -17,7 +17,8 @@
     "tslint": "tslint -c tslint.json -p tsconfig.json --project . -t stylish || echo",
     "test_typescript_setup": "node dist/hello-world.js",
     "test_db_conn": "node dist/test_sequelize.js",
-    "install_migrations_tool": "./scripts/install_standalone_migrations.sh"
+    "migrate_up": "db-migrate up",
+    "migrate_down": "db-migrate down"
   },
   "dependencies": {
     "apollo-server-express": "^1.3.2",
