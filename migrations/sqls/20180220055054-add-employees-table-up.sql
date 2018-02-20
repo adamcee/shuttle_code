@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS EMPLOYEES (
+    id SERIAL PRIMARY KEY,
+    employer_id INTEGER REFERENCES employers,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email CITEXT NOT NULL UNIQUE
+);
