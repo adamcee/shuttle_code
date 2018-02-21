@@ -82,5 +82,5 @@ app.get("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log('Go to http://localhost:3000/graphiql to run queries!');
+    console.log("Go to http://localhost:3000/graphiql to run queries!");
 });
