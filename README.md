@@ -23,5 +23,28 @@ It is easier to directly use db-migrate from the command line, than wrap its com
 *To drop all migrations:*
 `npm run migrate_down`
 
+# Using GraphiQL
+
+[GraphiQL](https://github.com/graphql/graphiql) is an in-brower IDE for exploring and building GraphQL Queries.
+To use it, after compiling your typescript code, run `npm start`. You should then be able to go to http://localhost:3000/graphiql and use GraphiQL.
+
+A sample query to use:
+```
+query testQuery {
+  employees {
+    id
+    employerId
+    firstName
+    lastName
+    email
+  }
+  employers {
+    id
+    name
+    email
+  }
+}
+```
+
 # NOTES
 - db-migrate is set to require migration files to be .sql files (which are executed by their corresponding .js migration files). Since the .sql file contains the actual migration queries to be applied, be sure your global .gitignore file is not ignoring .sql files.
