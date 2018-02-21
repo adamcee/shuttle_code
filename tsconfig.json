@@ -14,7 +14,8 @@
         "emitDecoratorMetadata": true,
         "sourceMap": true,
         "declaration": false,
-        "alwaysStrict": true
+        "alwaysStrict": true,
+        "lib": ["es2015", "esnext"]
     },
     "include": [
         "src/**/*"
