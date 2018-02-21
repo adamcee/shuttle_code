@@ -3,13 +3,14 @@
  */
  import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
 
- const typeDefs = `
+// employee(id: Int): Employee
+// employer(id: Int): Employer
+
+const typeDefs = `
  type Query {
-     employer(id: Int): Employer
-     allEmployers: [Employer]
-     employee(id: Int): Employee
-     allEmployees: [Employee]
-     allEmployeesOf(employerId: Int): [Employee]
+     employers: [Employer]
+     employees: [Employee]
+     employeesOf(employerId: Int): [Employee]
  }
 
  type Employer {
@@ -20,7 +21,7 @@
 
  type Employee {
      id: Int
-     employer_id: Int
+     employerId: Int
      firstName: String
      lastName: String
      email: String
