@@ -1,8 +1,6 @@
 /*
- * GraphQL Schema
+ * GraphQL Type Definitions
  */
- import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
-
 // employee(id: Int): Employee
 // employer(id: Int): Employer
 
@@ -28,6 +26,4 @@ const typeDefs = `
  }
  `;
 
- const schema = makeExecutableSchema({ typeDefs });
-
- export default schema;
+ export default typeDefs;
